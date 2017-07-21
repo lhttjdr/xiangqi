@@ -1,7 +1,7 @@
-Chinese-Chess-in-JavaScript
+Chinese Chess (Xiangqi) in JavaScript
 ===========================
 
-A project of Chinese Chess with AI based on HTML5/canvas and native javascript.
+A project of Chinese Chess with AI based on HTML5/canvas and native javascript. Here is a [demo](https://lhttjdr.github.io/xiangqi/).
 
 There are 2 Search Engines.
 

@@ -1,6 +1,6 @@
 ﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="zh-CN">
-    
+
     <head>
         <title>Chinese Chess</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -558,7 +558,7 @@
                         }
                         str+="</table>";
                         document.getElementById("debug").innerHTML=str;
-                    
+
                         var ctx = this.canvas.getContext('2d');
                         // 棋盘矩形背景
                         ctx.fillStyle = style.board.background;
@@ -688,12 +688,12 @@
                     // 鼠标移动时
                     onMouseMove: function (point) {
                         if (this.isDragging) {//若正在拖拽棋子
-                            if( point.x <= 0 || point.x >= layout.offsetWidth || point.y <= 0 || point.y >= layout.offsetHeight){                    
+                            if( point.x <= 0 || point.x >= layout.offsetWidth || point.y <= 0 || point.y >= layout.offsetHeight){
                                 this.isDragging = false; //停止拖拽
                                 this.moveTo(this.pos);//撤消移动
                                 this.parent.redraw();
                                 return;
-                            }                            
+                            }
                             //根据圆心反算矩形区域的左上角坐标
                             var x = point.x - layout.cell / 2,
                                 y = point.y - layout.cell / 2;
@@ -1037,7 +1037,7 @@
                     genPawnMove:function(map, pos, depth){
                         var x,y;
                         var chess = map[pos.x][pos.y];
-                        if((chess.type=="R_PAWN" && pos.y < 5)||(chess.type=="B_PAWN" && pos.y>4)) {//已过河 
+                        if((chess.type=="R_PAWN" && pos.y < 5)||(chess.type=="B_PAWN" && pos.y>4)) {//已过河
                             y=pos.y;
                             x=pos.x+1;//右
                             if(x < 9 && (map[x][y]==null || chess.camp!=map[x][y].camp)) this.addMove( pos, new Point(x, y), depth);
@@ -1153,7 +1153,7 @@
                     }
                 });
                 // 历史记录表
-                var HistoryHeuristic=Class.extend({ 
+                var HistoryHeuristic=Class.extend({
                     historyTable:null,
                     targetBuff:null,
                     create:function(){
@@ -1211,7 +1211,7 @@
                             //合并大小为s的相邻二段子数组
                             this.merge(source, target, i, i + s - 1, i + 2 * s - 1,direction);
                             i=i+2*s;
-                        }    
+                        }
                         if (i + s < n) //剩余的元素个数小於2s
                             this.merge(source, target, i, i + s - 1, n - 1,direction);
                         else
@@ -1296,7 +1296,7 @@
                         var toId = this.convertChessToNumber(map[move.to.x][move.to.y]),
                             chessId=this.convertChessToNumber(chess);
                         this.hashKey32 = this.hashKey32 ^ this.hashKey32Table[toId][move.from.x][move.from.y];
-                        this.hashCheck[move.from.x*10+move.from.y]=this.hashCheck[move.to.x*10+move.to.y];                        
+                        this.hashCheck[move.from.x*10+move.from.y]=this.hashCheck[move.to.x*10+move.to.y];
                         this.hashKey32 = this.hashKey32 ^ this.hashKey32Table[toId][move.to.x][move.to.y];
                         if (chessId) this.hashKey32 = this.hashKey32 ^ this.hashKey32Table[chessId][move.to.x][move.to.y];
                         this.hashCheck[move.to.x*10+move.to.y]=String.fromCharCode(toId+56);
@@ -1312,12 +1312,12 @@
                             case "lowerBound":
                                 if (pht.eval >= beta)
                                     return (pht.eval);
-                                else 
+                                else
                                     break;
                             case "upperBound":
                                 if (pht.eval <= alpha)
                                     return (pht.eval);
-                                else 
+                                else
                                     break;
                             }
                         }
@@ -1347,14 +1347,14 @@
                         if (score != 0) return score;
                         if (depth <= 0)    //叶子节点取估值
                             return this.evaluator.evaluate(this.currentMap, (this.maxDepth-depth)%2);//isRedTurn=(this.maxDepth-depth)%2
-    
+
                         var count = this.moveGen.createPossibleMove(this.currentMap, depth, (this.maxDepth-depth)%2);
 
-                        for (var i=0;i<count;i++) 
+                        for (var i=0;i<count;i++)
                         {
                             var chess = this.makeMove(this.moveGen.moveList[depth][i]);
                             score = -this.alphabeta(depth - 1, -beta, -alpha);
-                            this.unMakeMove(this.moveGen.moveList[depth][i],chess); 
+                            this.unMakeMove(this.moveGen.moveList[depth][i],chess);
 
                             if (score > alpha)
                             {
@@ -1384,7 +1384,7 @@
                         // 搜索停止时的深度
                         var stopDepth=0;
                         // 时间限制
-                        this.timeLimit=1500;
+                        this.timeLimit=40000;
                         // 棋盘值拷贝
                         //-由于会中途停止，不能返回初始状态，因此需要值拷贝，避免影响棋局进行
                         this.mapCopy(map);
@@ -1411,7 +1411,7 @@
                         // 判断行棋方
                         var isRedTurn = (this.maxDepth-depth)%2;
                         // 检查哈希表，如果已有记录，则直接返回
-                        score = this.TT.lookUpHashTable(alpha, beta, depth, isRedTurn); 
+                        score = this.TT.lookUpHashTable(alpha, beta, depth, isRedTurn);
                         if (score != 66666) return score;
                         // 叶子节点，估值
                         if (depth <= 0){
@@ -1425,7 +1425,7 @@
                                 return 66666;
                         }
                         // 产生子节点
-                        var count = this.moveGen.createPossibleMove(this.currentMap, depth, isRedTurn);            
+                        var count = this.moveGen.createPossibleMove(this.currentMap, depth, isRedTurn);
                         // 取出历史记录中的分数排序，调整子节点顺序
                         for (i=0;i<count;i++)
                             this.moveGen.moveList[depth][i].score = this.HH.getHistoryScore(this.moveGen.moveList[depth][i]);
@@ -1444,7 +1444,7 @@
                             // 第一个节点是全窗口搜索
                             var t = -this.negaScout(depth-1 , -b, -a );
                             // 第一个节点后的，若fail hight，则重新搜索
-                            if (t > a && t < beta && i > 0) 
+                            if (t > a && t < beta && i > 0)
                             {
                                 a = -this.negaScout (depth-1, -beta, -t );
                                 isEvalExact = 1;
@@ -1452,11 +1452,11 @@
                                     this.bestMove = this.moveGen.moveList[depth][i];
                                 bestmove = i;
                             }
-                            
+
                             // 撤消哈希
                             this.TT.hashUnMakeMove(this.moveGen.moveList[depth][i], target, this.currentMap);
                             // 恢复状态
-                            this.unMakeMove(this.moveGen.moveList[depth][i],target); 
+                            this.unMakeMove(this.moveGen.moveList[depth][i],target);
                             // 命中，保存
                             if (a < t)
                             {
@@ -1465,7 +1465,7 @@
                                 if(depth == this.maxDepth)
                                     this.bestMove = this.moveGen.moveList[depth][i];
                             }
-                            if ( a >= beta ) 
+                            if ( a >= beta )
                             {
                                 //下边界进入哈希表
                                 this.TT.enterHashTable("lowerBound", a, depth, isRedTurn);
@@ -1479,9 +1479,9 @@
                         if (bestmove != -1)
                         this.HH.enterHistoryScore(this.moveGen.moveList[depth][bestmove], depth);
                         // 搜索结果存入置换表
-                        if (isEvalExact) 
+                        if (isEvalExact)
                             this.TT.enterHashTable("exact", a, depth, isRedTurn);
-                        else 
+                        else
                             this.TT.enterHashTable("upperBound", a, depth, isRedTurn);
                         return a;
                     }
@@ -1497,7 +1497,7 @@
                             R_HORSE:350,
                             R_CANON:350,
                             R_KING:10000,
-                            
+
                             B_PAWN:100,
                             B_BISHOP:250,
                             B_ELEPHANT:250,
@@ -1514,7 +1514,7 @@
                             R_HORSE:12,
                             R_CANON:6,
                             R_KING:0,
-                            
+
                             B_PAWN:15,
                             B_BISHOP:1,
                             B_ELEPHANT:1,
@@ -1592,7 +1592,7 @@
                                 {
                                     var chess = map[i][j];
                                     this.getRelatePiece(map, new Point(i,j));//所有相关位置
-                                    //alert(this.posCount);                                    
+                                    //alert(this.posCount);
                                     for (var k = 0; k < this.posCount; ++k)
                                     {
                                         var target = map[this.relatePos[k].x][this.relatePos[k].y];
@@ -1633,7 +1633,7 @@
                                     this.chessValue[i][j] += this.constant.flexValue[chess.type] * this.flexibilityPos[i][j];//灵活性的价值
                                     if(chess.type=="R_PAWN")this.chessValue[i][j] += this.constant.RPawn[j][i];//兵的附加值
                                     if(chess.type=="B_PAWN")this.chessValue[i][j] += this.constant.BPawn[j][i];//卒的附加值
-                                    
+
                                     if (this.attackPos[i][j])//被威胁，分数减少
                                     {
                                         if ((chess.isRed() && isRedTurn) || (!chess.isRed() && !isRedTurn))//被威胁且自己走
@@ -1687,7 +1687,7 @@
                         else if(chess.type=="R_CAR"||chess.type=="B_CAR")this.genCarMove(map,pos);
                         else if(chess.type=="R_PAWN"||chess.type=="B_PAWN")this.genPawnMove(map,pos);
                         else if(chess.type=="R_CANON"||chess.type=="B_CANON")this.genCanonMove(map,pos);
-                        return this.posCount;            
+                        return this.posCount;
                     },
                     genKingMove:function(map, pos){
                         var x,y,k;
@@ -1859,7 +1859,7 @@
             }
         </script>
     </head>
-    
+
     <body>
         <div id="main">
             <div id="debug" style="float:left;display:none"></div>

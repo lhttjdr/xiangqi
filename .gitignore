@@ -1,0 +1,9 @@
+/mochawesome-report/
+/node_modules/
+npm-debug.log
+/bin/
+/obj/
+*.njsproj
+*.sln
+/.vs
+

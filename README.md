@@ -12,10 +12,11 @@ There are several Search Engines.
 - minimax search with alpha–beta pruning
 - negamax search with alpha–beta pruning (fail hard)
 - fail soft alpha-beta algorithm
-- a simple aspiration search based on fail-soft alpha-beta search
-- PVS (Principal Variation Search)
-- NegaScout(almost the same with PVS, sometime just another name of PVS)
+- a simple `aspiration search` based on fail-soft alpha-beta search
+- `PVS` (Principal Variation Search)
+- `NegaScout` (almost the same with PVS, sometime just another name of PVS)
 - NegaScout with transposition table and history heuristic enhancement
+- `MTD(f)`, Memory-enhanced Test Driver with node `n` and value `f`
 - iterative deepening version of fail-hard alpha-beta algorithm (using time limitation)
 - iterative deepening version of PVS (using time limitation)
 - iterative deepening version of NegaScout with transposition table and history heuristic enhancement

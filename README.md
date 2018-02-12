@@ -25,3 +25,5 @@ Here,
 - history husrestic (Assumption: If a move is good, then the next several moves are also good)
 - transposition table using Zobrist hash (In lots of cases, moves are independent and communitive)
 - iterative deepening search using time limitation (not fixed search depth, but depends on time cost)
+
+![Diagram of Project](dependencygraph.svg)

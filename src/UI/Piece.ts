@@ -56,8 +56,8 @@ export default class Piece extends Widget {
         ctx.beginPath();
         ctx.fillStyle = "rgba(0, 0, 0, 0.2)";
         // shadow
-        if (this.isDragging) ctx.arc(x + 2, y + 4, layout.chessRadius + 1, 0, 360);
-        else ctx.arc(x + 1, y + 2, layout.chessRadius + 1, 0, 360);
+        if (this.isDragging) ctx.arc(x + 2, y + 4, layout.chessRadius + 1, 0, Math.PI*2);
+        else ctx.arc(x + 1, y + 2, layout.chessRadius + 1, 0, Math.PI*2);
         ctx.fill();
         ctx.fillStyle = style.background;
         ctx.closePath();
@@ -65,14 +65,14 @@ export default class Piece extends Widget {
         if (this.targetIndicator != null && this.targetIndicatorAlpha > 0) {
             ctx.beginPath();
             ctx.fillStyle = "rgba(0, 128, 0, " + this.targetIndicatorAlpha + ")";
-            ctx.arc(layout.padding + this.targetIndicator.x * layout.cell, layout.padding + this.targetIndicator.y * layout.cell, layout.cell / 2, 0, 360);
+            ctx.arc(layout.padding + this.targetIndicator.x * layout.cell, layout.padding + this.targetIndicator.y * layout.cell, layout.cell / 2, 0, Math.PI*2);
             ctx.fill();
             ctx.fillStyle = style.background;
             ctx.closePath();
         }
         // piece body
         ctx.beginPath();
-        ctx.arc(x, y, layout.chessRadius, 0, 360);
+        ctx.arc(x, y, layout.chessRadius, 0, Math.PI*2);
         ctx.fill();
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";

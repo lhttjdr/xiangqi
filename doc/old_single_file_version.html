@@ -649,8 +649,8 @@
                         ctx.beginPath();
                         ctx.fillStyle = "rgba(0, 0, 0, 0.2)";
                         // 阴影
-                        if (this.isDragging) ctx.arc(x + 2, y + 4, layout.chessRadius + 1, 0, 360);
-                        else ctx.arc(x + 1, y + 2, layout.chessRadius + 1, 0, 360);
+                        if (this.isDragging) ctx.arc(x + 2, y + 4, layout.chessRadius + 1, 0, Math.PI*2);
+                        else ctx.arc(x + 1, y + 2, layout.chessRadius + 1, 0, Math.PI*2);
                         ctx.fill();
                         ctx.fillStyle = style.chess[this.camp].background;
                         ctx.closePath();
@@ -665,7 +665,7 @@
                         }
                         // 棋子本体
                         ctx.beginPath();
-                        ctx.arc(x, y, layout.chessRadius, 0, 360);
+                        ctx.arc(x, y, layout.chessRadius, 0, Math.PI*2);
                         ctx.fill();
                         ctx.textAlign = "center";
                         ctx.textBaseline = "middle";

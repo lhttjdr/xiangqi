@@ -943,7 +943,7 @@
                                     if ((!isRedTurn && chess.isRed()) ||(isRedTurn && !chess.isRed())) continue;
                                     var pos=new Point(i,j);
                                     if(chess.type=="R_KING" || chess.type=="B_KING") this.genKingMove(map, pos, depth);
-                                    else if(chess.type=="R_BOSHIP" || chess.type=="B_BOSHIP") this.genBishopMove(map, pos, depth);
+                                    else if(chess.type=="R_BISHOP" || chess.type=="B_BISHOP") this.genBishopMove(map, pos, depth);
                                     else if(chess.type=="R_ELEPHANT" || chess.type=="B_ELEPHANT") this.genElephantMove(map, pos, depth);
                                     else if(chess.type=="R_HORSE" || chess.type=="B_HORSE") this.genHorseMove(map, pos, depth);
                                     else if(chess.type=="R_CAR" || chess.type=="B_CAR") this.genCarMove(map, pos, depth);

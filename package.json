@@ -31,9 +31,9 @@
     "mocha": "^5.2.0",
     "mochawesome": "^2.3.0",
     "path": "^0.12.7",
-    "source-map-loader": "^0.2.3",
+    "source-map-loader": "^0.2.4",
     "ts-node": "^4.1.0",
     "typescript": "^2.7.1",
-    "webpack": "^3.10.0"
+    "webpack": "^5.75.0"
   }
 }
